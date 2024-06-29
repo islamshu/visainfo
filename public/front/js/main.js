@@ -39,6 +39,8 @@
     
 
     function get_posts() {
+        $("#loader").show()
+
         offset = 12;
         page = 1;
         let category = $('#category :selected').val();
@@ -64,6 +66,7 @@
                    },
             success: function(data) {
                 // $("#post-data").empty();
+                $("#loader").hide()
 
                 $("#post-data").html(data.html);
 
