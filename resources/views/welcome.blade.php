@@ -219,12 +219,10 @@
         }
         $(window).scroll(function() {
             if ($(window).scrollTop() + $(window).height() + 1 >= $(document).height()) {
+
                 // page++;
-
-                @auth
-
                 loadMoreData();
-            @endauth
+
 
         }
         });
