@@ -18,6 +18,22 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('uploads/'.get_general_value('icon')) }}">
     <title>{{ get_general_value('title') }}</title>
     <style>
+        #loader {
+            position: fixed; /* Stay in place */
+            z-index: 999; /* Sit on top */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+    <style>
         .nice-select {
             text-align: right !important;
         }
@@ -177,6 +193,8 @@
             </div>
         </div>
     </footer>
+    <div id="loader" style="display: none"><img src="{{ asset('backend/images/icons/loading.gif') }}" alt=""></div>
+
     <!-- Footer -->
     <!-- Footer -->
     <script src="{{ asset('front/libs/jquery.min.js') }}"></script>
@@ -199,6 +217,8 @@
 
             $('#staticBackdrop').modal();
             $('.c-preloader').show();
+            $("#loader").show()
+
 
             $.ajax({
                 type: 'post',
@@ -209,6 +229,8 @@
                 },
 
                 success: function(data) {
+
+                    $("#loader").hide()
 
                     $('#import_modal').html(data);
 
@@ -253,15 +275,14 @@
                     },
 
                     beforeSend: function() {
-                        $('.ajax-load').show();
+                        $("#loader").show()
                     }
                 })
                 .done(function(data) {
                     if (data.count == 0) {
                         $('#disblyarea').css("display", "block");
                     }
-                    $('.ajax-load').hide();
-
+                    $("#loader").hide();
                     $("#post-data").append(data.html);
                 })
                 .fail(function(jqXHR, ajaxOptions, thrownError) {
